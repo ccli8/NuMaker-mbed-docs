@@ -15,8 +15,29 @@ You could export IAR EWARM project from **mbed Online Compiler** or through **mb
 To export through mbed CLI, run the command below:    
 `$mbed export -i iar -m NUMAKER_PFM_NUC472`
     
-## Post-export processing
-Open the exported IAR EWARM project and change configurations as below if they are not so configured:
+## Fix debug options manually
+Open the exported *PROJECT.ewd* file with text editor and fix debug options as below:
+
+1. Search for **OCDynDriverList** and replace *NULINK_ID* with *THIRDPARTY_ID*.
+
+    ```
+    <option>
+        <name>OCDynDriverList</name>
+        <state>THIRDPARTY_ID</state>
+    </option>
+    ```
+
+1. Search for **CThirdPartyDriverDll** and replace *###Uninitialized###* with *C:\Program Files\Nuvoton Tools\Nu-Link_IAR\Nu-Link_IAR.dll* (**DEPENDENT ON WHERE NU-LINK DRIVER (IAR) IS INSTALLED**).
+
+    ```
+    <option>
+        <name>CThirdPartyDriverDll</name>
+        <state>C:\Program Files\Nuvoton Tools\Nu-Link_IAR\Nu-Link_IAR.dll</state>
+    </option>
+    ```
+
+## Check configurations in IAR EWARM IDE
+Open the exported IAR EWARM project with IAR EWARM and change configurations as below if they are not so configured. Most options have been OK.
 
 1. Set **Processor variant** to *Device* and choose *NUC400AE series (NUC442AE,NUC472AE)* through the **menu Project** > **Options** > **General Options** > **Target**.
 1. Set **FPU** to *VFPv4 single precision* through the menu **Project** > **Options** > **General Options** > **Target**.
