@@ -44,6 +44,6 @@ The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an exam
 1. Create a dummy uVision project, e.g. *debug-mbed* through the menu **Project** > **New Project**. Select *NUC400/NUC472HI8AE* (**TARGET DEPENDENT**) as target.
 1. Select *Nuvoton Nu-Link Driver/NUC400* (**TARGET DEPENDENT**) as ICE driver through the menu **Debug**.
 1. Copy *your_program*.elf built above to the uVision project folder **debug-mbed/Objects**.
-1. Replace *debug-mbed* with *your_program*.elf through the menu **Debug** > **Name of Executable**.
+1. Replace *debug-mbed* with *your_program*.elf through the menu **Output** > **Name of Executable**.
 1. Download *your_program*.elf through the  menu **Flash** > **Erase** and then **Flash** > **Download**.
 1. Enter debug session through the menu **Debug** > **Start Debug Session**.
