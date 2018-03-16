@@ -9,21 +9,24 @@ The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an exam
 1. Connect the board to the host computer via USB.
 
 ## mbed command line
-1. Guide GCC to generate uVision-compatible debug information by adding the `"-gdwarf-2"` flag in the JSON file `mbed-os/tools/profiles/debug.json`.
+1. Guide GCC to generate uVision-compatible debug information in the JSON file `mbed-os/tools/profiles/develop.json` by:
+    1. Changing optimization level to `"-O0"`
+    1. Changing debug information level to `"-g"`
+    1. Changing debug information format to `"-gdwarf-2"`
     
     <pre>
     "GCC_ARM": {
             "common": ["-c", "-Wall", "-Wextra",
-                    "-Wno-unused-parameter", "-Wno-missing-field-initializers",
-                    "-fmessage-length=0", "-fno-exceptions", "-fno-builtin",
-                        "-ffunction-sections", "-fdata-sections", "-funsigned-char",
-                    "-MMD", "-fno-delete-null-pointer-checks",
-                    "-fomit-frame-pointer", "-O0", “-g3”, <b>"-gdwarf-2"</b>],
+                   "-Wno-unused-parameter", "-Wno-missing-field-initializers",
+                   "-fmessage-length=0", "-fno-exceptions", "-fno-builtin",
+                   "-ffunction-sections", "-fdata-sections", "-funsigned-char",
+                   "-MMD", "-fno-delete-null-pointer-checks",
+                   "-fomit-frame-pointer", <b>"-O0", "-g", "-gdwarf-2"</b>],
     </pre>
     
 1. Build *your_program* through **mbed CLI** and you would get *your_program*.elf in the BUILD/NUMAKER_PFM_NUC472/GCC_ARM folder.
     ```
-    mbed compile -m NUMAKER_PFM_NUC472 -t GCC_ARM --profile mbed-os/tools/profiles/debug.json
+    mbed compile -m NUMAKER_PFM_NUC472 -t GCC_ARM
     ```
 
 ## Keil uVision IDE

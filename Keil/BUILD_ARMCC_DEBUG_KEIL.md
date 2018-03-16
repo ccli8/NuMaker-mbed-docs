@@ -16,28 +16,29 @@ The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an exam
 1. Connect the board to the host computer via USB.
 
 ## mbed command line
-1. Fix breakpoints cannot set in most source files by removing `".\"` from source files in relative path names.
+1. Guide ARM Compiler to generate uVision-compatible debug information in the JSON file `mbed-os/tools/profiles/develop.json` by:
+    1. Changing optimization level to `"-O0"`
+    1. Changing debug information level to `"-g"`
+    1. Changing debug information format to `"-gdwarf-3"` for ARM Compiler 6
     
-    In mbed-os/tools/toolchains/arm.py,
     <pre>
-    def compile(self, cc, source, object, includes):
-    # Build compile command
-    cmd = cc + self.get_compile_options(self.get_symbols(), includes)
-    
-    cmd.extend(self.get_dep_option(object))
-    <b>
-    # Remove '.\' from relative path names of source files. For example, '.\mbed-os\platform\retarget.cpp' will truncate to 'mbed-os\platform\retarget.cpp'.
-    if source.startswith('.\\'):
-        source = source[2:]
-    </b>     
-    cmd.extend(["-o", object, source])
+    "ARMC6": {
+        "common": ["-c", "--target=arm-arm-none-eabi", "-mthumb", <b>"-O0"</b>, <b>"-g"</b>, <b>"-gdwarf-3"</b>
+                   "-Wno-armcc-pragma-push-pop", "-Wno-armcc-pragma-anon-unions",
+                   "-DMULADDC_CANNOT_USE_R7", "-fdata-sections",
+                   "-fno-exceptions", "-MMD", "-D_LIBCPP_EXTERN_TEMPLATE(...)="],
     </pre>
     
-    It seems Keil cannot handle well relative path names starting with `".\"` in line to address mapping. The workaround can avoid it.
-    
+    <pre>
+    "ARM": {
+        "common": ["-c", "--gnu", "-Otime", "--split_sections",
+                   "--apcs=interwork", "--brief_diagnostics", "--restrict",
+                   "--multibyte_chars", <b>"-O0"</b>, <b>"-g"</b>],
+    </pre>
+
 1. Build *your_program* through **mbed CLI** and you would get *your_program*.elf in the BUILD/NUMAKER_PFM_NUC472/ARM folder.
     ```
-    mbed compile -m NUMAKER_PFM_NUC472 -t ARM --profile mbed-os/tools/profiles/debug.json
+    mbed compile -m NUMAKER_PFM_NUC472 -t ARM
     ```
 
 ## Keil uVision IDE
