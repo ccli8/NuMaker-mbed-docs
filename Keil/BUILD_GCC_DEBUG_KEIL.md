@@ -5,15 +5,17 @@ This is a simple guide for how to build with GCC toolchain and debug with Keil u
 The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an example for explanation.
 
 ## Hardware setup
-1. Switch the *NuMaker-PFM-NUC472* board to **Debug** mode.
-1. Connect the board to the host computer via USB.
+1.  Switch the *NuMaker-PFM-NUC472* board to **Debug** mode.
+1.  Connect the board to the host computer via USB.
 
 ## mbed command line
 1. Guide GCC to generate uVision-compatible debug information in the JSON file `mbed-os/tools/profiles/develop.json` by:
-    1. Changing optimization level to `"-O0"`
-    1. Changing debug information level to `"-g"`
-    1. Changing debug information format to `"-gdwarf-2"`
-    
+    1.  Changing optimization level to **"-O0"**
+    1.  Changing debug information level to **"-g"**
+    1.  Changing debug information format to **"-gdwarf-2"**
+    1.  Add **"-DMBED_DEBUG"** macro.
+        Also confirm `idle-thread-stack-size-debug-extra` is defined in `mbed-os/rtos/mbed_lib.json` for debug target. Both `MBED_DEBUG` and `idle-thread-stack-size-debug-extra` must be ready to enable extra idle thread stack size in debug build.
+
     <pre>
     "GCC_ARM": {
             "common": ["-c", "-Wall", "-Wextra",
@@ -21,7 +23,7 @@ The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an exam
                    "-fmessage-length=0", "-fno-exceptions", "-fno-builtin",
                    "-ffunction-sections", "-fdata-sections", "-funsigned-char",
                    "-MMD", "-fno-delete-null-pointer-checks",
-                   "-fomit-frame-pointer", <b>"-O0", "-g", "-gdwarf-2"</b>],
+                   "-fomit-frame-pointer", <b>"-O0"</b>, <b>"-g"</b>, <b>"-gdwarf-2"</b>, <b>"-DMBED_DEBUG"</b>],
     </pre>
     
 1. Build *your_program* through **mbed CLI** and you would get *your_program*.elf in the BUILD/NUMAKER_PFM_NUC472/GCC_ARM folder.

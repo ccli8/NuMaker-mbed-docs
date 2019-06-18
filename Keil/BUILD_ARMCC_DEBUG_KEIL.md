@@ -4,26 +4,28 @@ This is a simple guide for how to build with ARMCC toolchain and debug with Keil
 
 At first glance, this is unnecessary because mbed tool already supports **Export Keil Project**. But it is still useful because:
 
-1. Sometimes a bug can only re-produce with the original executable built by mbed CLI. An executable built from exported Keil project cannot re-produce the bug.
-1. Building with mbed CLI can take much less time than building the exported Keil project in Keil uVision IDE.
+1.  Sometimes a bug can only re-produce with the original executable built by mbed CLI. An executable built from exported Keil project cannot re-produce the bug.
+1.  Building with mbed CLI can take much less time than building the exported Keil project in Keil uVision IDE.
 
 The trick comes mainly from the [page](http://www.keil.com/support/docs/2310.htm) and some complements are added for mbed development.
 
 The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an example for explanation.
 
 ## Hardware setup
-1. Switch the *NuMaker-PFM-NUC472* board to **Debug** mode.
-1. Connect the board to the host computer via USB.
+1.  Switch the *NuMaker-PFM-NUC472* board to **Debug** mode.
+1.  Connect the board to the host computer via USB.
 
 ## mbed command line
-1. Guide ARM Compiler to generate uVision-compatible debug information in the JSON file `mbed-os/tools/profiles/develop.json` by:
-    1. Changing optimization level to `"-O0"`
-    1. Changing debug information level to `"-g"`
-    1. Changing debug information format to `"-gdwarf-3"` for ARM Compiler 6
-    
+1.  Guide ARM Compiler to generate uVision-compatible debug information in the JSON file `mbed-os/tools/profiles/develop.json` by:
+    1.  Changing optimization level to **"-O0"**
+    1.  Changing debug information level to **"-g"**
+    1.  Changing debug information format to **"-gdwarf-3"** for ARM Compiler 6
+    1.  Add **"-DMBED_DEBUG"** macro.
+        Also confirm `idle-thread-stack-size-debug-extra` is defined in `mbed-os/rtos/mbed_lib.json` for debug target. Both `MBED_DEBUG` and `idle-thread-stack-size-debug-extra` must be ready to enable extra idle thread stack size in debug build.
+
     <pre>
     "ARMC6": {
-        "common": ["-c", "--target=arm-arm-none-eabi", "-mthumb", <b>"-O0"</b>, <b>"-g"</b>, <b>"-gdwarf-3"</b>
+        "common": ["-c", "--target=arm-arm-none-eabi", "-mthumb", <b>"-O0"</b>, <b>"-g"</b>, <b>"-gdwarf-3"</b>, <b>"-DMBED_DEBUG"</b>,
                    "-Wno-armcc-pragma-push-pop", "-Wno-armcc-pragma-anon-unions",
                    "-DMULADDC_CANNOT_USE_R7", "-fdata-sections",
                    "-fno-exceptions", "-MMD", "-D_LIBCPP_EXTERN_TEMPLATE(...)="],
@@ -33,7 +35,7 @@ The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an exam
     "ARM": {
         "common": ["-c", "--gnu", "-Otime", "--split_sections",
                    "--apcs=interwork", "--brief_diagnostics", "--restrict",
-                   "--multibyte_chars", <b>"-O0"</b>, <b>"-g"</b>],
+                   "--multibyte_chars", <b>"-O0"</b>, <b>"-g"</b>, <b>"-DMBED_DEBUG"</b>],
     </pre>
 
 1. Build *your_program* through **mbed CLI** and you would get *your_program*.elf in the BUILD/NUMAKER_PFM_NUC472/ARM folder.
