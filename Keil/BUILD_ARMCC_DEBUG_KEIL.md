@@ -1,13 +1,13 @@
-# Build with ARMCC and debug with Keil uVision
+# Build with Mbed CLI ARM/ARMC6 and debug with Keil uVision
 
-This is a simple guide for how to build with ARMCC toolchain and debug with Keil uVision IDE.
+This is a simple guide for how to build with Mbed CLI `ARM`/`ARMC6` toolchain and debug with Keil uVision IDE.
 
-At first glance, this is unnecessary because mbed tool already supports **Export Keil Project**. But it is still useful because:
+The trick comes mainly from the [page](http://www.keil.com/support/docs/2310.htm) and some complements are added for Mbed program development.
 
-1.  Sometimes a bug can only re-produce with the original executable built by mbed CLI. An executable built from exported Keil project cannot re-produce the bug.
-1.  Building with mbed CLI can take much less time than building the exported Keil project in Keil uVision IDE.
+Though [Export Keil uVision project](https://os.mbed.com/docs/mbed-os/v5.15/tutorials/keil-uvision.html) can achieve more complete development/debugging purpose, this approach can be preferred in the following conditions:
 
-The trick comes mainly from the [page](http://www.keil.com/support/docs/2310.htm) and some complements are added for mbed development.
+1.  Sometimes a bug can only re-produce with the original executable built by Mbed CLI. An executable built from exported Keil project cannot re-produce the bug.
+1.  Building with Mbed CLI can take much less time than building the exported Keil project in Keil uVision IDE.
 
 The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an example for explanation.
 
@@ -38,7 +38,7 @@ The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an exam
                    "--multibyte_chars", <b>"-O0"</b>, <b>"-g"</b>, <b>"-DMBED_DEBUG"</b>],
     </pre>
 
-1. Build *your_program* through **mbed CLI** and you would get *your_program*.elf in the BUILD/NUMAKER_PFM_NUC472/ARM folder.
+1. Build *your_program* through **Mbed CLI** and you would get *your_program*.elf in the BUILD/NUMAKER_PFM_NUC472/ARM folder.
     ```
     mbed compile -m NUMAKER_PFM_NUC472 -t ARM
     ```
@@ -50,3 +50,15 @@ The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an exam
 1. Replace *debug-mbed* with *your_program*.elf through the menu **Output** > **Name of Executable**.
 1. Download *your_program*.elf through the  menu **Flash** > **Erase** and then **Flash** > **Download**.
 1. Enter debug session through the menu **Debug** > **Start Debug Session**.
+
+## Known issues
+
+This approach is not officially provided by Arm Mbed.
+It has the following known issues:
+
+1.  Generated ELF file is not completely compatible with Keil uVision and can cause Keil uVision to crash on entering debugging.
+1.  Continuging above, source mapping doesn't work sometimes. Though, it can be addressed by the manual bring-up means:
+    1.  Find the address of the function you want to source-debug by checking MAP file. Take note of it.
+    1.  Pop up context menu from Disassembly View.
+    1.  Enter the address in [Show Disassembly at Address](show_disassembly_at_address.png)
+    

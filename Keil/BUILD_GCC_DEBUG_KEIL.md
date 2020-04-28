@@ -1,6 +1,6 @@
-# Build with GCC and debug with Keil uVision
+# Build with Mbed CLI GCC_ARM and debug with Keil uVision
 
-This is a simple guide for how to build with GCC toolchain and debug with Keil uVision IDE.
+This is clone of [Build with Mbed CLI ARM/ARMC6 and debug with Keil uVision](BUILD_ARMCC_DEBUG_KEIL.md), with toolchain changed to GCC.
 
 The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an example for explanation.
 
@@ -26,7 +26,7 @@ The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an exam
                    "-fomit-frame-pointer", <b>"-O0"</b>, <b>"-g"</b>, <b>"-gdwarf-2"</b>, <b>"-DMBED_DEBUG"</b>],
     </pre>
     
-1. Build *your_program* through **mbed CLI** and you would get *your_program*.elf in the BUILD/NUMAKER_PFM_NUC472/GCC_ARM folder.
+1. Build *your_program* through **Mbed CLI** and you would get *your_program*.elf in the BUILD/NUMAKER_PFM_NUC472/GCC_ARM folder.
     ```
     mbed compile -m NUMAKER_PFM_NUC472 -t GCC_ARM
     ```

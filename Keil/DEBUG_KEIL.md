@@ -13,8 +13,12 @@ To debug Mbed program with Keil uVision, please follow the steps below.
 1. Connect the board to the host computer via USB. If the switch above is correct, you **WON'T** see USB drive in the host computer.
 
 ## Software requirement
-- [Keil MDK](http://www2.keil.com/mdk5) 5 or afterwards 
-- [Nu-Link Driver (Keil)](http://www.nuvoton.com/hq/products/microcontrollers/arm-cortex-m4-mcus/Software/?__locale=en&resourcePage=Y)
+-   [Keil MDK](http://www2.keil.com/mdk5) 5 or afterwards 
+-   [Keil Nu-Link debugger driver](https://github.com/OpenNuvoton/Nuvoton_Tools)
+
+    This installation will:
+    1.  Update Nuvoton device database in Keil.
+    1.  Install the latest Nu-Link driver.
 
 ## Export Keil uVision project 
 

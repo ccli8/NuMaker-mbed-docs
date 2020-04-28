@@ -1,6 +1,6 @@
 # Debug mbed program with IAR EWARM
 
-This is a simple guide for how to debug mbed program with IAR EWARM.
+This is a simple guide for how to debug Mbed program with IAR EWARM.
 
 To debug mbed program with IAR EWARM, please follow the steps below.
 The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an example for explanation.
@@ -10,12 +10,13 @@ The *NuMaker-PFM-NUC472* board (*NUMAKER_PFM_NUC472* target) is taken as an exam
 1. Connect the board to the host computer via USB.
 
 ## Software requirement
-- **IAR Embedded Workbench for ARM 8.32** or afterwards
-- [Nu-Link Driver (IAR)](http://www.nuvoton.com/hq/products/microcontrollers/arm-cortex-m4-mcus/Software/?__locale=en&resourcePage=Y)
-  This installation will:
-  1. Update Nuvoton device database in IAR.
-  1. Install the latest Nu-Link driver. By steps below, you can choose to use the latest or IAR built-in (since IAR8) Nu-Link driver.
-- [Arm Mbed CLI](https://github.com/ARMmbed/mbed-cli#installing-mbed-cli) (option)
+-   **IAR Embedded Workbench for ARM 8.32** or afterwards
+-   [IAR Nu-Link debugger driver](https://github.com/OpenNuvoton/Nuvoton_Tools)
+
+    This installation will:
+    1. Update Nuvoton device database in IAR.
+    1. Install the latest Nu-Link driver. By steps below, you can choose to use the latest or IAR built-in (since IAR8) Nu-Link driver.
+-   [Arm Mbed CLI](https://github.com/ARMmbed/mbed-cli#installing-mbed-cli) (option)
 
 ## Export IAR EWARM project
 
