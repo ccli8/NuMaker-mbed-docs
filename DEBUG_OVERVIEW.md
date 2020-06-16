@@ -30,7 +30,7 @@ All Nuvoton targets are shipped with Nu-Link/Nu-Link2 USB adapters, which enable
 
     **Note1**: Keil uVision must upgrade to 5.29 or above per verification.
 
-    **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](KEIL/DEBUG_KEIL.md) for needed setup.
+    **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](Keil/DEBUG_KEIL.md) for needed setup.
 
 -   Develop/debug on Mbed CLI exported Keil uVision project
 
@@ -40,7 +40,7 @@ All Nuvoton targets are shipped with Nu-Link/Nu-Link2 USB adapters, which enable
 
     **Note1**: Keil uVision must upgrade to 5.29 or above per verification.
 
-    **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](KEIL/DEBUG_KEIL.md) for needed setup.
+    **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](Keil/DEBUG_KEIL.md) for needed setup.
 
 -   [Build with Mbed CLI ARM/ARMC6 and debug with Keil uVision](Keil/BUILD_ARMCC_DEBUG_KEIL.md)
 
@@ -48,7 +48,7 @@ All Nuvoton targets are shipped with Nu-Link/Nu-Link2 USB adapters, which enable
 
     **Note1**: This approach is not officially supported by Arm Mbed and has drawbacks. Check it for details.
 
-    **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](KEIL/DEBUG_KEIL.md) for needed setup.
+    **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](Keil/DEBUG_KEIL.md) for needed setup.
 
 -   [Build with Mbed CLI GCC_ARM and debug with Keil uVision](Keil/BUILD_GCC_DEBUG_KEIL.md)
 
@@ -56,13 +56,13 @@ All Nuvoton targets are shipped with Nu-Link/Nu-Link2 USB adapters, which enable
 
     **Note1**: This approach is not officially supported by Arm Mbed and has drawbacks. Check it for details.
 
-    **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](KEIL/DEBUG_KEIL.md) for needed setup.
+    **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](Keil/DEBUG_KEIL.md) for needed setup.
 
--   [Enable post-mortem debugging with Keil uVision](KEIL/POSTMORTEM_DEBUG_KEIL.md)
+-   [Enable post-mortem debugging with Keil uVision](Keil/POSTMORTEM_DEBUG_KEIL.md)
 
     This document instructs how to enable post-mortem debugging with Keil uVision on a crashed device.
 
--   [Enable debugging on Nuvoton's targets with Keil uVision](KEIL/DEBUG_KEIL.md)
+-   [Enable debugging on Nuvoton's targets with Keil uVision](Keil/DEBUG_KEIL.md)
 
     This document instructs how to enable debugging with Keil uVision on Nuvoton's Mbed Enabled targets.
 
