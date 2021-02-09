@@ -42,17 +42,9 @@ All Nuvoton targets are shipped with Nu-Link/Nu-Link2 USB adapters, which enable
 
     **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](Keil/DEBUG_KEIL.md) for needed setup.
 
--   [Build with Mbed CLI ARM/ARMC6 and debug with Keil uVision](Keil/BUILD_ARMCC_DEBUG_KEIL.md)
+-   [Build with Mbed CLI ARM/ARMC6/GCC_ARM and debug with Keil uVision](Keil/BUILD_MBEDCLI_DEBUG_KEIL.md)
 
-    This approach builds your project with Mbed CLI with `ARM`/`ARMC6` toolchain, and debugs on compatible ELF file with Keil uVision.
-
-    **Note1**: This approach is not officially supported by Arm Mbed and has drawbacks. Check it for details.
-
-    **Note2**: Check [Enable debugging on Nuvoton's targets with Keil uVision](Keil/DEBUG_KEIL.md) for needed setup.
-
--   [Build with Mbed CLI GCC_ARM and debug with Keil uVision](Keil/BUILD_GCC_DEBUG_KEIL.md)
-
-    This approach builds your project with Mbed CLI with `GCC_ARM` toolchain, and debugs on compatible ELF file with Keil uVision.
+    This approach builds your project with Mbed CLI with `ARM`/`ARMC6`/`GCC_ARM` toolchain, and debugs on compatible ELF file with Keil uVision.
 
     **Note1**: This approach is not officially supported by Arm Mbed and has drawbacks. Check it for details.
 
